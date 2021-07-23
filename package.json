@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MohamedMesahel/Team-Profile-Generator#readme",
   "dependencies": {
+    "inquirer": "^8.1.2",
     "jest": "^27.0.6"
   }
 }
