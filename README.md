@@ -20,7 +20,7 @@ This application was created to build a Node.js command-line application that ta
 ## Usage 
 After installation run command `node index.js` in the command line then the app will start to ask you series of questions to build your HTML file, after answering all the questions your HTML.file will be generated with your team card information.
 View walk through video here 
-- [Screencastify](https://drive.google.com/file/d/1tWZNaLaSKDgV-UohblVVEdnwex9nPzDj/view)
+- [Screencastify](https://drive.google.com/file/d/1ME6q9pFHJHn1M5F0CB7Zh9czBusj0NOm/view)
 
 ### Screen Shots
 ![](./assets/img/Teamprofile.png)
