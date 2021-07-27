@@ -3,7 +3,7 @@
 }
 
 :root {
-    --primary: lightslategray;
+    --primary: rgb(224, 69, 12);
     --secondary: white;
 }
 
@@ -21,15 +21,14 @@ body {
     font-size: 50px;
 }
 
-
 .card-header {
-    background-color: var(--primary);
+    background-color: rgb(61, 132, 231);
     color: var(--secondary);
 }
 
 .card-body {
     background-color: var(--secondary);
-    color: var(--primary);
+    color: black;
 }
 
 .container {
