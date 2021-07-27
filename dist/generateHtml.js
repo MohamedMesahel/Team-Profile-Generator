@@ -1,4 +1,4 @@
-// create Manager card
+// Function to `generateManager` card
 const generateManager = function (manager) {
     return `
     <div class="col-4 mt-4">
@@ -19,7 +19,7 @@ const generateManager = function (manager) {
     `;
 }
 
-// create Engineer card
+//Function to `generateEngineer` card
 const generateEngineer = function (engineer) {
     return `
     <div class="col-4 mt-4">
@@ -40,7 +40,7 @@ const generateEngineer = function (engineer) {
     `
 }
 
-// create Intern card 
+// Function to `generateIntern` card
 const generateIntern = function (intern) {
     return `
     <div class="col-4 mt-4">
@@ -60,32 +60,29 @@ const generateIntern = function (intern) {
     `
 };
 
-// push array to page 
+// Function and call to `generateHTML` and storing those data
 generateHTML = (data) => {
-
-    // array for cards 
     pageArray = [];
 
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
         const role = employee.getRole();
 
-
-        // call manager function
+        // Call Manager function
         if (role === 'Manager') {
             const managerCard = generateManager(employee);
 
             pageArray.push(managerCard);
         }
 
-        // call engineer function
+        // Call Engineer function
         if (role === 'Engineer') {
             const engineerCard = generateEngineer(employee);
 
             pageArray.push(engineerCard);
         }
 
-        // call intern function 
+        // Call Intern function 
         if (role === 'Intern') {
             const internCard = generateIntern(employee);
 
@@ -93,17 +90,13 @@ generateHTML = (data) => {
         }
 
     }
-
-    // joining strings 
     const employeeCards = pageArray.join('')
-
-    // return to generated page
     const generateTeam = generateTeamPage(employeeCards);
     return generateTeam;
 
 }
 
-// generate html page 
+// Function to `generateTeamPage` page 
 const generateTeamPage = function (employeeCards) {
     return `
   <!DOCTYPE html>
@@ -143,5 +136,5 @@ const generateTeamPage = function (employeeCards) {
 `;
 }
 
-// export to index
+// Export Module to HTML page
 module.exports = generateHTML;
