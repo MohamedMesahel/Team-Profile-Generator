@@ -1,5 +1,5 @@
 // link to page creation
-const generateHTML = require('./src/generateHTML');
+const generateHTML = require('./dist/generateHTML');
 
 // team profiles
 const Manager = require('./lib/manager');
@@ -19,7 +19,7 @@ const addManager = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'Who is the manager of this team?',
+            message: 'Please Provide the manager name of this team?',
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -90,7 +90,7 @@ const addEmployee = () => {
         {
             type: 'list',
             name: 'role',
-            message: "Please choose your employee's role",
+            message: "Please choose employee's role",
             choices: ['Engineer', 'Intern']
         },
         {
