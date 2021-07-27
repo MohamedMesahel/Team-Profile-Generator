@@ -1,57 +1,46 @@
-// link to page creation
+// Use the generated `generateHTML` to `writefile`
 const generateHTML = require('./dist/generateHTML');
 
-// team profiles
+// Connecting team profiles
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
-// node modules 
+// Packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-
-// team array
+// Provide team array
 const teamArray = [];
-
-// start of manager prompts 
+// The user for manager information using `manager questions`
+// Then use their ansers to decise what to do next 
 const addManager = () => {
     return inquirer.prompt([
+
         {
             type: 'input',
             name: 'name',
             message: 'Please Provide the manager name of this team?',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log("Please enter the manager's name!");
-                    return false;
-                }
+            validate: nameInput => {if (nameInput) {return true;} else {console.log("Please enter the manager's name!");
+            return false;
+             }
             }
         },
         {
             type: 'input',
             name: 'id',
             message: "Please enter the manager's ID.",
-            validate: nameInput => {
-                if (isNaN(nameInput)) {
-                    console.log("Please enter the manager's ID!")
-                    return false;
-                } else {
-                    return true;
-                }
+            validate: nameInput => {if (isNaN(nameInput)) {console.log("Please enter the manager's ID!") 
+            return false;} else {return true;}
             }
         },
         {
             type: 'input',
             name: 'email',
             message: "Please enter the manager's email.",
-            validate: email => {
-                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+            validate: email => {valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
                 if (valid) {
-                    return true;
-                } else {
-                    console.log('Please enter an email!')
+                return true;
+                } else {console.log('Please enter an email!')
                     return false;
                 }
             }
@@ -60,25 +49,21 @@ const addManager = () => {
             type: 'input',
             name: 'officeNumber',
             message: "Please enter the manager's office number",
-            validate: nameInput => {
-                if (isNaN(nameInput)) {
-                    console.log('Please enter an office number!')
-                    return false;
-                } else {
-                    return true;
-                }
+            validate: nameInput => { if (isNaN(nameInput)) {console.log('Please enter an office number!')
+                return false;
+                } else { return true;}
             }
         }
     ])
+// Then using manager input to creat manger `HTML card`
         .then(managerInput => {
             const { name, id, email, officeNumber } = managerInput;
             const manager = new Manager(name, id, email, officeNumber);
-
             teamArray.push(manager);
             console.log(manager);
         })
 };
-
+// Then ask the user to `addEmployee`
 const addEmployee = () => {
     console.log(`
     =================
@@ -97,40 +82,28 @@ const addEmployee = () => {
             type: 'input',
             name: 'name',
             message: "What's the name of the employee?",
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log("Please enter an employee's name!");
-                    return false;
-                }
+            validate: nameInput => { if (nameInput) { return true;  } 
+            else {  console.log("Please enter an employee's name!");   return false;}
             }
         },
         {
             type: 'input',
             name: 'id',
             message: "Please enter the employee's ID.",
-            validate: nameInput => {
-                if (isNaN(nameInput)) {
-                    console.log("Please enter the employee's ID!")
-                    return false;
-                } else {
-                    return true;
-                }
+            validate: nameInput => { if (isNaN(nameInput)) {console.log("Please enter the employee's ID!")
+                return false;
+                } else { return true;}
             }
         },
         {
             type: 'input',
             name: 'email',
             message: "Please enter the employee's email.",
-            validate: email => {
-                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+            validate: email => {valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
                 if (valid) {
                     return true;
-                } else {
-                    console.log('Please enter an email!')
-                    return false;
-                }
+                } else { console.log('Please enter an email!')
+                    return false;}
             }
         },
         {
@@ -138,12 +111,8 @@ const addEmployee = () => {
             name: 'github',
             message: "Please enter the employee's github username.",
             when: (input) => input.role === "Engineer",
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log("Please enter the employee's github username!")
-                }
+            validate: nameInput => { if (nameInput) { return true;
+                } else {console.log("Please enter the employee's github username!")}
             }
         },
         {
@@ -151,12 +120,9 @@ const addEmployee = () => {
             name: 'school',
             message: "Please enter the intern's school",
             when: (input) => input.role === "Intern",
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log("Please enter the intern's school!")
-                }
+            validate: nameInput => { if (nameInput) {
+                 return true;
+                } else {console.log("Please enter the intern's school!")}
             }
         },
         {
@@ -167,7 +133,7 @@ const addEmployee = () => {
         }
     ])
         .then(employeeData => {
-            // data for employee types 
+            // Then collect employee data to generate employees cards
 
             let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
             let employee;
@@ -204,7 +170,7 @@ const writeFile = data => {
             return;
             // when the profile has been created 
         } else {
-            console.log("Your team profile has been successfully created! Please check out the index.html")
+            console.log("Your team profile cards have been successfully created at index.html!")
         }
     })
 };
