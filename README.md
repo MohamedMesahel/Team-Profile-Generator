@@ -6,6 +6,8 @@
 [![Website shields.io](https://badges.aleen42.com/src/node.svg)](http://shields.io/)
 [![Website shields.io](https://badges.aleen42.com/src/npm.svg)](http://shields.io/)
 [![Website shields.io](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](http://shields.io/)
+[![Website shields.io](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](http://shields.io/)
+
 # Team-Profile-Generator
 This application was created to build a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.
 
